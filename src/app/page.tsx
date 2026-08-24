@@ -29,17 +29,6 @@ const projects = [
       "Cut manual data entry and reduced human error in document-heavy workflows",
     ],
   },
-  {
-    name: "Predicting Occupations",
-    tag: "Python · Pandas · scikit-learn",
-    description:
-      "Income-level classification on the 1990 US Census dataset using several machine learning models.",
-    bullets: [
-      "Implemented Decision Tree, K-Nearest Neighbor, Random Forest, and Naive Bayes classifiers",
-      "Cleaned and preprocessed data — missing values, normalization, categorical encoding",
-      "Random Forest was the top performer, reaching 97.7% accuracy",
-    ],
-  },
 ];
 
 const skills = [
