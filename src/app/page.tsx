@@ -78,9 +78,9 @@ export default function Home() {
             Jonathan Cruz
           </h1>
           <p className="max-w-xl text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Software engineer who builds full-stack applications and automation
-            tools — from production web apps to internal tools that save teams
-            hours of manual work.
+            2.5+ years of experience building full-stack applications and
+            automation tools — from production web apps to internal tools
+            that save teams hours of manual work.
           </p>
           <div className="flex gap-4 pt-2 text-sm font-medium">
             <a

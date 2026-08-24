@@ -47,7 +47,7 @@ export default function OpengraphImage() {
             marginTop: 24,
           }}
         >
-          Software engineer building full-stack apps and automation tools
+          2.5+ years of experience building full-stack apps and automation tools
         </div>
       </div>
     ),
