@@ -37,7 +37,7 @@ export default function OpengraphImage() {
             letterSpacing: -2,
           }}
         >
-          Jonathan Cruz
+          Jonathan David Cruz
         </div>
         <div
           style={{
@@ -47,7 +47,7 @@ export default function OpengraphImage() {
             marginTop: 24,
           }}
         >
-          2.5+ years of experience building full-stack apps and automation tools
+          Almost 3 years building full-stack apps, automation tools, and an AI agent on Claude
         </div>
       </div>
     ),

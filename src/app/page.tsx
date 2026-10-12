@@ -1,11 +1,12 @@
 import Image from "next/image";
+import ResumeDownloadButton from "@/components/ResumeDownloadButton";
 
 const projects = [
   {
     name: "Riffstub",
-    tag: "Next.js · TypeScript · PostgreSQL · Vercel",
+    tag: "Next.js · TypeScript · React · PostgreSQL · Supabase · Vercel",
     description:
-      "A full-stack concert tracking app, designed, built, and deployed solo — from database schema through production hosting on a custom domain.",
+      "A full-stack concert tracking app, designed, built, and deployed solo, from database schema through production hosting on a custom domain.",
     bullets: [
       "Email/password auth with optional TOTP two-factor, and PostgreSQL row-level security to lock down each user's data",
       "Integrated Ticketmaster, SeatGeek, and Spotify with custom rate limiting and attribution",
@@ -13,26 +14,29 @@ const projects = [
     ],
     link: "https://riffstub.com",
     linkLabel: "riffstub.com",
+    codeLink: "https://github.com/JonathanCruzDavid/riffstub",
     screenshots: [
       { src: "/riffstub-landing.png", alt: "Riffstub landing page" },
       { src: "/riffstub-preview.png", alt: "Riffstub artist show page for Tame Impala" },
     ],
   },
   {
-    name: "Document Reader",
-    tag: "Python · Azure Machine Learning",
+    name: "Set → Playlist",
+    tag: "Python · Spotify API · YouTube Data API",
     description:
-      "A tool that automatically extracts key fields — invoice numbers, case details — from unstructured PDF documents.",
+      "A fun side project: paste a YouTube DJ set and get a Spotify playlist of every track in it, with fuzzy matching to find the right version of each song.",
     bullets: [
-      "Trained a custom Azure ML document labeling model to improve parsing accuracy across document formats",
-      "Exported structured output to Excel for easier reporting and tracking",
-      "Cut manual data entry and reduced human error in document-heavy workflows",
+      "Parses tracklists from video descriptions, chapters, or comments, cleaning up timestamps, tags, and promo text",
+      "Scores each Spotify match on title and artist similarity, flagging uncertain ones for manual review",
+      "Runs as either a CLI or a browser UI, with tests backing the matching logic",
     ],
+    codeLink: "https://github.com/JonathanCruzDavid/set-to-playlist",
   },
 ];
 
 const skills = [
-  { group: "Languages", items: ["Python", "SQL", "JavaScript", "C++"] },
+  { group: "Languages", items: ["Python", "SQL", "JavaScript", "TypeScript", "C++"] },
+  { group: "AI Tools", items: ["Claude", "GitHub Copilot", "OpenAI Codex", "Gemini"] },
   { group: "Web / Backend", items: ["FastAPI", "React", "Next.js", "Supabase", "Vite"] },
   { group: "Databases", items: ["PostgreSQL", "MongoDB", "Redis", "MySQL"] },
   { group: "Cloud & DevOps", items: ["Azure", "Vercel", "Docker", "Git", "Doppler", "Playwright"] },
@@ -43,7 +47,7 @@ export default function Home() {
     <div className="flex flex-1 flex-col bg-background text-foreground">
       <header className="sticky top-0 z-10 border-b border-black/10 bg-background/80 backdrop-blur dark:border-white/10">
         <nav className="mx-auto flex w-full max-w-3xl items-center justify-between px-6 py-4 text-sm">
-          <span className="font-medium">Jonathan Cruz</span>
+          <span className="font-medium">Jonathan David Cruz</span>
           <div className="flex gap-6 text-zinc-600 dark:text-zinc-400">
             <a href="#about" className="hover:text-foreground">About</a>
             <a href="#projects" className="hover:text-foreground">Projects</a>
@@ -64,12 +68,12 @@ export default function Home() {
           />
           <p className="text-sm text-zinc-500 dark:text-zinc-400">Queens, NY</p>
           <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-            Jonathan Cruz
+            Jonathan David Cruz
           </h1>
           <p className="max-w-xl text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            2.5+ years of experience building full-stack applications and
-            automation tools — from production web apps to internal tools
-            that save teams hours of manual work.
+            Almost 3 years building backend systems and automation tools,
+            including an internal AI agent that handles support tickets on
+            its own, plus full-stack apps I design and ship end to end.
           </p>
           <div className="flex gap-4 pt-2 text-sm font-medium">
             <a
@@ -84,6 +88,7 @@ export default function Home() {
             >
               Get in touch
             </a>
+            <ResumeDownloadButton />
           </div>
         </section>
 
@@ -92,11 +97,17 @@ export default function Home() {
             About
           </h2>
           <p className="max-w-xl leading-8 text-zinc-700 dark:text-zinc-300">
-            I&apos;m a Software Administrator at Friedman Vartolo LLP, where I build
-            full-stack applications with Streamlit and FastAPI, deployed to
-            Azure — tools for generating case reports, automating repetitive
-            workflows, and monitoring processes across legal and IT teams. I
-            also build things on my own time, like{" "}
+            I spent the last three years as a Software Administrator
+            (functionally a software engineer) at Friedman Vartolo LLP, a law
+            firm, building backend systems and automating manual workflows.
+            The project I&apos;m proudest of is an internal AI agent I helped
+            build on Claude. It researches support tickets, queries
+            databases, and carries out tasks through Playwright and API
+            calls, and now reliably handles more than half of the team&apos;s
+            routine tickets on its own. I also built a monitoring framework
+            that&apos;s saved the firm 479+ hours of manual work to date,
+            plus full-stack internal tools with Streamlit and FastAPI,
+            deployed on Azure. I also build things on my own time, like{" "}
             <a
               href="https://riffstub.com"
               className="font-medium underline underline-offset-4 hover:text-foreground"
@@ -133,16 +144,28 @@ export default function Home() {
                       project.name
                     )}
                   </h3>
-                  {project.link && (
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm text-zinc-500 hover:text-foreground dark:text-zinc-400"
-                    >
-                      {project.linkLabel}
-                    </a>
-                  )}
+                  <div className="flex gap-4 text-sm text-zinc-500 dark:text-zinc-400">
+                    {project.link && (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-foreground"
+                      >
+                        {project.linkLabel}
+                      </a>
+                    )}
+                    {"codeLink" in project && project.codeLink && (
+                      <a
+                        href={project.codeLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-foreground"
+                      >
+                        View code
+                      </a>
+                    )}
+                  </div>
                 </div>
                 <p className="text-xs font-medium tracking-wide text-zinc-500 uppercase dark:text-zinc-400">
                   {project.tag}
@@ -212,7 +235,7 @@ export default function Home() {
             Contact
           </h2>
           <p className="max-w-xl leading-8 text-zinc-700 dark:text-zinc-300">
-            Feel free to reach out — I&apos;m always open to talking about new
+            Feel free to reach out. I&apos;m always open to talking about new
             projects or opportunities.
           </p>
           <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium">
@@ -230,12 +253,20 @@ export default function Home() {
             >
               LinkedIn
             </a>
+            <a
+              href="https://github.com/JonathanCruzDavid"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-4 hover:text-foreground"
+            >
+              GitHub
+            </a>
           </div>
         </section>
       </main>
 
       <footer className="border-t border-black/10 py-6 text-center text-xs text-zinc-500 dark:border-white/10 dark:text-zinc-400">
-        © {new Date().getFullYear()} Jonathan Cruz
+        © {new Date().getFullYear()} Jonathan David Cruz
       </footer>
     </div>
   );
