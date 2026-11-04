@@ -10,7 +10,7 @@ export default function ResumeDownloadButton() {
   return (
     <a
       href="/resume.pdf"
-      download
+      download="Jonathan_David_Cruz_Resume.pdf"
       onClick={handleClick}
       className="rounded-full border border-black/10 px-5 py-2.5 transition-colors hover:bg-black/[.04] dark:border-white/15 dark:hover:bg-white/[.06]"
     >

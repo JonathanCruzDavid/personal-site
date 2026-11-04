@@ -8,9 +8,9 @@ const projects = [
     description:
       "A full-stack concert tracking app, designed, built, and deployed solo, from database schema through production hosting on a custom domain.",
     bullets: [
-      "Email/password auth with optional TOTP two-factor, and PostgreSQL row-level security to lock down each user's data",
-      "Integrated Ticketmaster, SeatGeek, and Spotify with custom rate limiting and attribution",
-      "Built a custom content moderation system with automated filtering and an admin review queue",
+      "Email/password login with optional TOTP two-factor, using Supabase/PostgreSQL row-level security to restrict each user's data at the database level",
+      "Custom content moderation with automated filtering and an admin review queue, plus database-backed rate limiting, without third-party services",
+      "Continuous deployment through Vercel's Git integration, building and deploying on every push to main",
     ],
     link: "https://riffstub.com",
     linkLabel: "riffstub.com",
@@ -34,12 +34,43 @@ const projects = [
   },
 ];
 
+const experience = {
+  title: "Software Administrator (Software Engineer)",
+  company: "Friedman Vartolo LLP",
+  location: "Garden City, NY",
+  dates: "Dec 2023 – Oct 2026",
+  bullets: [
+    "Built an automation dashboard that auto-classified incoming case updates from a third-party servicing platform and applied handling rules automatically, eliminating manual entry for the boarding team. Automated 1,495 processes across 71,000+ case updates, saving 479+ hours to date and on pace for 850+ annually.",
+    "Trained an internal Claude-based AI agent to research tickets, query the firm's databases, generate reports, and carry out tasks through Playwright and API calls, refining it until it reliably handled more than half of straightforward tickets with a human-approved plan.",
+    "Developed full-stack internal applications with Streamlit and FastAPI, deployed to Azure via Docker and YAML-based CI/CD pipelines, including tools for case reports, staff workflow automation, and live process monitoring.",
+    "Trained custom Azure Machine Learning models to extract data from vendor invoices, reconciling it against internal case and payment records to confirm payments and flag discrepancies.",
+    "Integrated SQL queries with dynamic templates to auto-generate case-specific court filings and client documents (motions, affidavits) as cases progressed.",
+  ],
+};
+
+const upcoming = [
+  {
+    name: "Riffstub for Android",
+    status: "In progress · Coming to Google Play",
+    tag: "Kotlin · Jetpack Compose · Supabase · Coroutines/Flow",
+    description:
+      "A native Android client for Riffstub, built solo from scratch. It shares the website's backend, so accounts, privacy, and moderation behave the same on both.",
+    bullets: [
+      "MVVM with one ViewModel per screen, type-safe Navigation Compose routes, and a five-tab bottom bar with a separate back stack per tab",
+      "Authorization handled entirely by PostgreSQL row-level security and security-definer functions, so no separate mobile API is needed",
+      "Ticketmaster, SeatGeek, and Spotify calls proxied through the website's API routes, so no API keys ship in the APK",
+      "Feed, follows, private accounts, nearby-show discovery, TOTP sign-in, and in-app report, block, and account deletion",
+    ],
+    codeLink: "https://github.com/JonathanCruzDavid/riffstub-android",
+  },
+];
+
 const skills = [
   { group: "Languages", items: ["Python", "SQL", "JavaScript", "TypeScript", "C++"] },
   { group: "AI Tools", items: ["Claude", "GitHub Copilot", "OpenAI Codex", "Gemini"] },
   { group: "Web / Backend", items: ["FastAPI", "React", "Next.js", "Supabase", "Vite"] },
   { group: "Databases", items: ["PostgreSQL", "MongoDB", "Redis", "MySQL"] },
-  { group: "Cloud & DevOps", items: ["Azure", "Vercel", "Docker", "Git", "Doppler", "Playwright"] },
+  { group: "Cloud & DevOps", items: ["Azure", "Vercel", "Docker", "CI/CD (YAML pipelines)", "Git", "Doppler", "Playwright"] },
 ];
 
 export default function Home() {
@@ -48,8 +79,9 @@ export default function Home() {
       <header className="sticky top-0 z-10 border-b border-black/10 bg-background/80 backdrop-blur dark:border-white/10">
         <nav className="mx-auto flex w-full max-w-3xl items-center justify-between px-6 py-4 text-sm">
           <span className="font-medium">Jonathan David Cruz</span>
-          <div className="flex gap-6 text-zinc-600 dark:text-zinc-400">
+          <div className="flex gap-4 text-zinc-600 sm:gap-6 dark:text-zinc-400">
             <a href="#about" className="hover:text-foreground">About</a>
+            <a href="#experience" className="hover:text-foreground">Experience</a>
             <a href="#projects" className="hover:text-foreground">Projects</a>
             <a href="#contact" className="hover:text-foreground">Contact</a>
           </div>
@@ -71,9 +103,10 @@ export default function Home() {
             Jonathan David Cruz
           </h1>
           <p className="max-w-xl text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Almost 3 years building backend systems and automation tools,
-            including an internal AI agent that handles support tickets on
-            its own, plus full-stack apps I design and ship end to end.
+            3 years building backend systems and automating manual
+            workflows, including an internal Claude-based AI agent that
+            handles support tickets. Now focused on backend and
+            automation-heavy engineering roles.
           </p>
           <div className="flex gap-4 pt-2 text-sm font-medium">
             <a
@@ -97,29 +130,53 @@ export default function Home() {
             About
           </h2>
           <p className="max-w-xl leading-8 text-zinc-700 dark:text-zinc-300">
-            I spent the last three years as a Software Administrator
-            (functionally a software engineer) at Friedman Vartolo LLP, a law
-            firm, building backend systems and automating manual workflows.
-            The project I&apos;m proudest of is an internal AI agent I helped
-            build on Claude. It researches support tickets, queries
-            databases, and carries out tasks through Playwright and API
-            calls, and now reliably handles more than half of the team&apos;s
-            routine tickets on its own. I also built a monitoring framework
-            that&apos;s saved the firm 479+ hours of manual work to date,
-            plus full-stack internal tools with Streamlit and FastAPI,
-            deployed on Azure. I also build things on my own time, like{" "}
+            I spent three years as a Software Administrator (functionally a
+            software engineer) at Friedman Vartolo LLP, a law firm, building
+            backend systems with Python, SQL, FastAPI, and Azure. I trained
+            an internal Claude-based AI agent that researches tickets,
+            queries databases, and carries out tasks through Playwright and
+            API calls, and built an automation dashboard that has saved the
+            firm 479+ hours of manual entry. I also trained ML models to
+            pull data out of vendor invoices. Outside of work I build things
+            end to end, like{" "}
             <a
               href="https://riffstub.com"
               className="font-medium underline underline-offset-4 hover:text-foreground"
             >
               Riffstub
             </a>
-            , a concert tracking app I designed and shipped solo.
+            , a concert tracking app I designed and shipped solo, and its
+            native Android app, which I&apos;m building now.
           </p>
           <p className="max-w-xl leading-8 text-zinc-700 dark:text-zinc-300">
-            I graduated from SUNY Old Westbury with a B.S. in Computer and
-            Information Science in 2022.
+            I graduated from SUNY College of Old Westbury with a B.S. in
+            Computer and Information Science in 2022.
           </p>
+        </section>
+
+        <section id="experience" className="flex flex-col gap-6 scroll-mt-20">
+          <h2 className="text-sm font-semibold tracking-wide text-zinc-500 uppercase dark:text-zinc-400">
+            Experience
+          </h2>
+          <div className="flex flex-col gap-3">
+            <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+              <h3 className="text-xl font-semibold">{experience.title}</h3>
+              <span className="text-sm text-zinc-500 dark:text-zinc-400">
+                {experience.dates}
+              </span>
+            </div>
+            <p className="text-sm text-zinc-500 dark:text-zinc-400">
+              {experience.company} · {experience.location}
+            </p>
+            <ul className="flex flex-col gap-2 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
+              {experience.bullets.map((bullet) => (
+                <li key={bullet} className="flex gap-2">
+                  <span className="text-zinc-400 dark:text-zinc-600">–</span>
+                  <span>{bullet}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </section>
 
         <section id="projects" className="flex flex-col gap-8 scroll-mt-20">
@@ -202,6 +259,49 @@ export default function Home() {
                     ))}
                   </div>
                 )}
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="upcoming" className="flex flex-col gap-8 scroll-mt-20">
+          <h2 className="text-sm font-semibold tracking-wide text-zinc-500 uppercase dark:text-zinc-400">
+            Upcoming
+          </h2>
+          <div className="flex flex-col gap-10">
+            {upcoming.map((project) => (
+              <div
+                key={project.name}
+                className="flex flex-col gap-3 rounded-xl border border-dashed border-black/15 p-5 dark:border-white/15"
+              >
+                <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                  <h3 className="text-xl font-semibold">{project.name}</h3>
+                  <a
+                    href={project.codeLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-zinc-500 hover:text-foreground dark:text-zinc-400"
+                  >
+                    View code
+                  </a>
+                </div>
+                <span className="w-fit rounded-full bg-black/[.05] px-3 py-1 text-xs font-medium text-zinc-600 dark:bg-white/[.08] dark:text-zinc-300">
+                  {project.status}
+                </span>
+                <p className="text-xs font-medium tracking-wide text-zinc-500 uppercase dark:text-zinc-400">
+                  {project.tag}
+                </p>
+                <p className="leading-7 text-zinc-700 dark:text-zinc-300">
+                  {project.description}
+                </p>
+                <ul className="flex flex-col gap-1.5 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
+                  {project.bullets.map((bullet) => (
+                    <li key={bullet} className="flex gap-2">
+                      <span className="text-zinc-400 dark:text-zinc-600">–</span>
+                      <span>{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>

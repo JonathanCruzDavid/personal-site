@@ -47,7 +47,7 @@ export default function OpengraphImage() {
             marginTop: 24,
           }}
         >
-          Almost 3 years building full-stack apps, automation tools, and an AI agent on Claude
+          3 years building backend systems, automation, and an AI agent on Claude
         </div>
       </div>
     ),
