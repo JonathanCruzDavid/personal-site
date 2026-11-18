@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
   title: "Jonathan David Cruz",
-  description: "3 years building backend systems and automating manual workflows, including an internal Claude-based AI agent that handles support tickets.",
+  description: "Nearly 3 years building backend systems and automating manual workflows, including an internal Claude-based AI agent that handles support tickets.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

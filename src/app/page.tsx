@@ -35,16 +35,17 @@ const projects = [
 ];
 
 const experience = {
-  title: "Software Administrator (Software Engineer)",
+  title: "Software Engineer, AI & Automation (Software Administrator)",
   company: "Friedman Vartolo LLP",
   location: "Garden City, NY",
   dates: "Dec 2023 – Oct 2026",
   bullets: [
-    "Built an automation dashboard that auto-classified incoming case updates from a third-party servicing platform and applied handling rules automatically, eliminating manual entry for the boarding team. Automated 1,495 processes across 71,000+ case updates, saving 479+ hours to date and on pace for 850+ annually.",
-    "Trained an internal Claude-based AI agent to research tickets, query the firm's databases, generate reports, and carry out tasks through Playwright and API calls, refining it until it reliably handled more than half of straightforward tickets with a human-approved plan.",
-    "Developed full-stack internal applications with Streamlit and FastAPI, deployed to Azure via Docker and YAML-based CI/CD pipelines, including tools for case reports, staff workflow automation, and live process monitoring.",
-    "Trained custom Azure Machine Learning models to extract data from vendor invoices, reconciling it against internal case and payment records to confirm payments and flag discrepancies.",
-    "Integrated SQL queries with dynamic templates to auto-generate case-specific court filings and client documents (motions, affidavits) as cases progressed.",
+    "Co-built an internal AI agent on Claude: extracted 2,000+ historical tickets and how each was resolved into JSON so Claude could match new tickets to past solutions, and wrote the prompts that turn those matches into step-by-step instructions. The agent confirmed its instructions were correct by querying the firm's database to match them against the expected output. Built Playwright automations to carry out approved instructions, and validated outputs through human review; it reliably resolved about 70% of routine tickets and gave staff a head start on the rest.",
+    "Built an automation dashboard that let the team classify incoming case updates from a third-party servicing platform and automatically apply handling rules, eliminating manual entry for the boarding team. Automated 1,495 workflows across 71,000+ case updates, saving 479+ hours.",
+    "Built a Streamlit monitoring dashboard, backed by FastAPI and deployed to Azure via Docker, to track production automations. Configured automated failure alerts that emailed me and the affected team immediately so they could act while I deployed a fix.",
+    "Trained a custom Azure Document Intelligence model to extract data from incoming vendor invoices into structured JSON by labeling sample documents, then reconciled the extracted fields against internal case and payment records to confirm payments and flag discrepancies.",
+    "Streamlined document prep by integrating SQL queries with dynamic templates to auto-generate case-specific court filings and client documents (motions, affidavits) as cases progressed through defined steps.",
+    "Partnered with non-technical staff across departments to train them on new automation and AI tools, writing clear internal documentation for every tool shipped.",
   ],
 };
 
@@ -67,10 +68,11 @@ const upcoming = [
 
 const skills = [
   { group: "Languages", items: ["Python", "SQL", "JavaScript", "TypeScript", "C++"] },
-  { group: "AI Tools", items: ["Claude", "GitHub Copilot", "OpenAI Codex", "Gemini"] },
-  { group: "Web / Backend", items: ["FastAPI", "React", "Next.js", "Supabase", "Vite"] },
-  { group: "Databases", items: ["PostgreSQL", "MongoDB", "Redis", "MySQL"] },
-  { group: "Cloud & DevOps", items: ["Azure", "Vercel", "Docker", "CI/CD (YAML pipelines)", "Git", "Doppler", "Playwright"] },
+  { group: "AI & Automation", items: ["Claude API", "Prompt Engineering", "Azure Document Intelligence", "Playwright", "GitHub Copilot", "OpenAI Codex", "Gemini"] },
+  { group: "Web / Backend", items: ["FastAPI", "REST APIs", "React", "Next.js", "Streamlit", "Supabase", "Vite"] },
+  { group: "Databases", items: ["MySQL", "PostgreSQL", "Redis", "MongoDB"] },
+  { group: "Cloud & DevOps", items: ["Azure", "Vercel", "Docker", "CI/CD (YAML pipelines)", "Git", "Doppler"] },
+  { group: "Spoken Languages", items: ["English", "Spanish (fluent)"] },
 ];
 
 export default function Home() {
@@ -103,10 +105,10 @@ export default function Home() {
             Jonathan David Cruz
           </h1>
           <p className="max-w-xl text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            3 years building backend systems and automating manual
+            Nearly 3 years building backend systems and automating manual
             workflows, including an internal Claude-based AI agent that
-            handles support tickets. Now focused on backend and
-            automation-heavy engineering roles.
+            handles support tickets. Now focused on software, AI, and
+            automation engineering roles.
           </p>
           <div className="flex gap-4 pt-2 text-sm font-medium">
             <a
@@ -130,14 +132,15 @@ export default function Home() {
             About
           </h2>
           <p className="max-w-xl leading-8 text-zinc-700 dark:text-zinc-300">
-            I spent three years as a Software Administrator (functionally a
-            software engineer) at Friedman Vartolo LLP, a law firm, building
-            backend systems with Python, SQL, FastAPI, and Azure. I trained
-            an internal Claude-based AI agent that researches tickets,
-            queries databases, and carries out tasks through Playwright and
-            API calls, and built an automation dashboard that has saved the
-            firm 479+ hours of manual entry. I also trained ML models to
-            pull data out of vendor invoices. Outside of work I build things
+            I spent nearly three years as a Software Administrator
+            (functionally a software engineer) at Friedman Vartolo LLP, a law
+            firm, building backend systems with Python, SQL, FastAPI, and
+            Azure. I co-built an internal Claude-based AI agent that matches
+            new tickets against 2,000+ past ones and carries out approved
+            tasks through Playwright, and built an automation dashboard that
+            saved the firm 479+ hours of manual entry. I also trained an
+            Azure Document Intelligence model to pull data out of vendor
+            invoices. Outside of work I build things
             end to end, like{" "}
             <a
               href="https://riffstub.com"
